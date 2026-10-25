@@ -1,17 +1,22 @@
 {
-  "name": "hybrid-hearts-tmp",
-  "version": "0.1.0",
+  "name": "hybrid-hearts-website",
+  "version": "1.0.0",
   "private": true,
+  "description": "Static bilingual (Arabic/English) website for Dr. Gamal Mansour — Hybrid Hearts Cardiac Surgery.",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "build": "next build && node scripts/fix-export-segments.mjs",
+    "preview": "node scripts/serve-out.mjs",
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "check": "npm run lint && npm run typecheck && npm run build"
   },
   "dependencies": {
+    "lucide-react": "^1.61.0",
     "next": "16.4.3",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "simple-icons": "^16.35.0"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",

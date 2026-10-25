@@ -1,0 +1,33 @@
+// Generated from the image processing step. Each photo exists in /public/images as <name>-<width>.webp.
+// All photographs are used under the Unsplash License (https://unsplash.com/license).
+
+export type PhotoAsset = {
+  width: number;
+  height: number;
+  widths: readonly number[];
+  blur: string;
+  credit: string;
+};
+
+export const photos = {
+  "hero-team": { width: 2800, height: 1867, widths: [768, 1280, 1920, 2560], blur: "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAACQAwCdASoYABAAPu1iqU2ppaQiMAgBMB2JaQAAV/+okET5UYEAAM46drDou7hwNw2by8e3EHNT+wDutu5pOWzgAAA=", credit: "Unsplash — photo-1664902270856-e6774c9df737" },
+  "or-monochrome": { width: 2800, height: 1866, widths: [640, 1080, 1600, 2400], blur: "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQBACdASoYABAAPu1iqk4ppaQiMAgBMB2JaQAASp9X7JKI43J6IHOtkAD+eG0SeYfR+syvqmVeRa7wEewiefA0SLTOEZ/RXsG9857A0Jq3DBkMc+TEn6AA", credit: "Unsplash — photo-1504439468489-c8920d796a29" },
+  "modern-or": { width: 2800, height: 1867, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAADQAwCdASoYABAAPu1kqU2ppaOiMAgBMB2JYgCdACBxcqPOnG7M48AA/o4Y16XbT0JtKKAx01gMCOVqLYZPz9AgYtf+E2CSJxEgXTXuz/Grn7G3EqAKPwDCJf/PRYVdN3Pzz4XjYXFQOZVSJwNZ/oAA", credit: "Unsplash — photo-1775947933085-30050ddad6b3" },
+  "hybrid-cathlab": { width: 2800, height: 2100, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAwBACdASoYABIAPu1orE+ppiQiMBgIATAdiWcAzfwHzCtBmTLkXvpXDgAA/dIEW3zjtwBXbgnGpjqYX2jN7Dh4BoK0QM2i4v1FW+lVGhNk+KkuurURsFus+dLblIH+if6SOphZ/y2MT80r6q1AAA==", credit: "Unsplash — photo-1559000357-f6b52ddfbe37" },
+  "surgical-team": { width: 2800, height: 1824, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADQAwCdASoYABAAPu1kqk4ppaQiMAgBMB2JZgCdABupKBiNtZtEeAAA/nG1IyReugkAhEfH8nJT2L49h639dTjB+bXadbL8b/ZAen0PVZP4m6Lbo8Nlwa91UTRrPKq/CM/wbyf0OvqY7Ldu5fBNS6R0tSBH30oAAAA=", credit: "National Cancer Institute / Unsplash — photo-1579684453423-f84349ef60b0" },
+  "hybrid-or": { width: 2800, height: 2100, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAADQBACdASoYABIAPu1kq06ppaQiKA1RMB2JQBahIOgga/kJaM1XmJ57PRn3ptqaMAD+SStE9Hy7tQb+tt9Se++Vte7WGktGUzX9y/oqUQjXgO7HdjAuHxz4y+55WW8ZA4bpotTaiHePYORFHklcRQIeO4qW0WAaZgBStZBS54h8pLRgS2jAAA==", credit: "Natanael Melchor / Unsplash — photo-1512102438733-bfa4ed29aef7" },
+  "stethoscope-hands": { width: 2800, height: 1867, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAADQAwCdASoYABAAPu1kqk2ppaQiMAgBMB2JZQCw7Ayu9tqkh1U86cAA/nS3KnvJbTJzzHq/mrQ+MlwWEn2uTmbRnIp5rRnewhQeoU6mhIMWsDSiNJ3OcRTOCszbs/s1VGvPPRqLhNjuCN/AAAA=", credit: "Felipe Queiroz Alves / Unsplash — photo-1706958580555-106465805df1" },
+  "heart-model": { width: 2800, height: 4200, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAADwBQCdASoYACQAPu1mq1GppSOjqrgKATAdiUAY3odPv3q8J+lo32oO+nH4Fx6mDg/lANd+P/qiIAD+6oM8gfRRpIxh71JkkRy+54PyzWacPycMMc3DtLdcrnZUdNgimQ2CVGroDpRuccgWV2+T1cyui7aVTfExYw7iae7KtvP7DYy6A1ptJuXldDj23RxasYxbzilqeS6AAA==", credit: "Unsplash — photo-1618939304347-e91b1f33d2ab" },
+  "stethoscope-heart-dark": { width: 2800, height: 1909, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAQBACdASoYABAAPu1iqU2ppaOiMAgBMB2JaAAAUpNq8Kdw/+x68o5VAAD+5P/o0ogkPc/nHxCiM1aakosknC15OXWA/Botf6mXIeU6fJ9KYnVngLYLkwccbeMQ2e9zjgyGnWrCBDG1epHS4jyKZQ7W0GpWYt0qpivql/AAAAA=", credit: "Unsplash — photo-1690787628851-d36e285c29b0" },
+  "stethoscope-burgundy": { width: 2800, height: 4200, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAADQBQCdASoYACQAPt1gpU2opiOiNVgMARAbiWkAAL8QMyeu2HmCPXe+b8P9fp6EncbY79+Pvi0QAP700pd/xDko1oMRL8TglmurIRlpFsV9H91Ba3HedmSdWba9zmkgEjnb+Bz8AVwa0HxCuy+BYCECPoY5WcMrlBtuXKhHOL11SikbGCMZn68rlV65XrhyR3OvTMQAAAA=", credit: "Unsplash — photo-1763070282954-c6f7c27d6ffa" },
+  "stethoscope-heart-light": { width: 2800, height: 1867, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAAAwBACdASoYABAAPu1iqU2ppaQiMAgBMB2JbAC7ACElXEkWHD6eAOmS7gAA/u/sd9X6HGdrcYQbdZDNXAwXFi3SWd/iDKhjl6vx+Wp6mYfr5nQuVtn5J3dtzvZezqTrDwNC8n6PR0x3BNEAss8uygAA", credit: "Unsplash — photo-1708433061324-06cfe6d48762" },
+  "ecg-screen": { width: 2800, height: 1866, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAABQAwCdASoYABAAPu1kqk4tJaQiMAgBoB2JZwBTAAogh4j1AAD+8KKcXXm1OQO2ZtTV4DyS0nzEoc2SnwAAAA==", credit: "Unsplash — photo-1682706841281-f723c5bfcd83" },
+  "ecg-monitor": { width: 2800, height: 1866, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwBACdASoYABAAPu1iqk4ppaQiMAgBMB2JYgCdINiJW2CbvjZ+COCfQgAA/v5I1d3Bt/AUQldbzV+oHaSLLXwH1tz/m8GpPG2UtCZjQeuRliZHVYN5jSUAAAA=", credit: "Joshua Chehov / Unsplash — photo-1682706841297-5524ba1faa9c" },
+  "heart-model-white": { width: 2800, height: 1866, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACQAwCdASoYABAAPu1iqU2ppaOiMAgBMB2JZQC06CHfI5b/LicAAP7epzom0H8j8wtPqypBB12bHbfZAbOqjnk84/c16kp6XE6s6a5NAAA=", credit: "Unsplash — photo-1623134915831-9dcb66cf9a8e" },
+  "consultation-notes": { width: 2800, height: 1575, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAwCdASoYAA0APu1kq04ppaQiMAgBMB2JYwCw7CB74mEqnHeXiocoAP7jQdYM5hUIM9nq1/T6IigjgA4KU6JOwMI63ne8ZG2kPvlBv/yBFK/yIZ6dwygfKUsf4sSGSd4AAA==", credit: "Unsplash — photo-1758691461990-03b49d969495" },
+  "care-tablet": { width: 2800, height: 1867, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAQBACdASoYABAAPu1kqU2ppaOiMAgBMB2JQBfJAtw7K6rbb/o6IpU0AADNcvFR41PpZ+GLXnnAYEbx+tldsCHwpiIwhb2ipyA9rZViHmW/slGRiIb8R3Z21b0aoSdv59bwAA==", credit: "Unsplash — photo-1666886573531-48d2e3c2b684" },
+  "heart-berries": { width: 2800, height: 1710, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAwCdASoYAA8APu1mqk4ppaOiMAgBMB2JZQC/OCHhWxGYZYrcOrkAAP7qgKeHbkGhQW/qX9kYwlhPT3pzin8EKeOJGBoA", credit: "Unsplash — photo-1463740839922-2d3b7e426a56" },
+  "walking-park": { width: 2800, height: 5077, widths: [640, 1080, 1600], blur: "data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAADQBgCdASoYACsAPu1gqk8ppSOiKrgN+TAdiUAQP2Egd6deygfF6+tf4KqZlYpLBOLi/LC0u/xS+Z6Hkwb6JQAA/vKyS5S40cUD6J/9KhLzX+HyGiegy6eCo2YYha5adzHYROBwyYGvVfC/LGqBM0eFGQOwdO42YcwCgkf7wYuJjCr4H8jyoGonanLs8EXX+evHZexsG+ushRMPEyi34nuBjAOHrpQkJGMjb0EwCx9Sz3doBFdAZUTGvjdQUQWO0LNEAAAA", credit: "Unsplash — photo-1772588767316-20a9aa0ad3f1" },
+} as const satisfies Record<string, PhotoAsset>;
+
+export type PhotoName = keyof typeof photos;

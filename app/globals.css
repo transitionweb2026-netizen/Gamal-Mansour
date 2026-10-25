@@ -1,26 +1,520 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ==========================================================================
+   Hybrid Hearts design system
+   Official brand colours: crimson #DC0038 and plum #3C0060 — never altered.
+   Everything else is derived from them.
+   ========================================================================== */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  /* Official colours */
+  --color-crimson: #dc0038;
+  --color-plum: #3c0060;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Crimson scale (500 = official) */
+  --color-crimson-50: #fdf0f4;
+  --color-crimson-100: #fbdce5;
+  --color-crimson-200: #f6b3c6;
+  --color-crimson-300: #ee7a9a;
+  --color-crimson-400: #e5406c;
+  --color-crimson-500: #dc0038;
+  --color-crimson-600: #b8002f; /* small text on light tints (AA) */
+  --color-crimson-700: #940026;
+  --color-crimson-800: #6e001c;
+
+  /* Plum scale (700 = official) */
+  --color-plum-50: #f7f1fb;
+  --color-plum-100: #eee5f5;
+  --color-plum-200: #e3d5ef;
+  --color-plum-300: #c7aedd;
+  --color-plum-400: #9a73bb;
+  --color-plum-500: #6b3394;
+  --color-plum-600: #4f1478;
+  --color-plum-700: #3c0060;
+  --color-plum-800: #2c0047;
+  --color-plum-900: #1f0033; /* deep plum for contrast sections */
+  --color-plum-950: #140021;
+
+  /* Light brand tints used as page surfaces (never plain white) */
+  --color-pearl: #fcf5f8;
+  --color-blush: #f8eaf0; /* light rose */
+  --color-blush-200: #f3dce5; /* pale rose */
+  --color-lilac: #eee5f5; /* light lavender */
+  --color-lilac-200: #e3d5ef; /* pale violet */
+
+  /* Text: brand-compatible deep purple neutrals */
+  --color-ink: #24102f;
+  --color-ink-700: #4a3557;
+  --color-ink-500: #6e5a7c;
+
+  --font-sans: var(--font-body), "Segoe UI", Tahoma, system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-body), "Segoe UI", system-ui, sans-serif;
+
+  --container-site: 84rem;
+  --container-prose: 44rem;
+
+  --radius-5xl: 2.75rem;
+
+  --shadow-glass: inset 0 1px 0 0 rgb(255 255 255 / 0.7), 0 18px 44px -20px rgb(60 0 96 / 0.38),
+    0 4px 14px -8px rgb(220 0 56 / 0.2);
+  --shadow-lift: 0 32px 64px -28px rgb(60 0 96 / 0.5), 0 14px 28px -14px rgb(220 0 56 / 0.28);
+  --shadow-glow-crimson: 0 12px 32px -10px rgb(220 0 56 / 0.6);
+  --shadow-glow-plum: 0 12px 32px -12px rgb(60 0 96 / 0.65);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  --breakpoint-xs: 23.75rem;
+
+  --animate-rise: rise 1s var(--ease-out-expo) both;
+  --animate-fade: fade 1.2s var(--ease-out-expo) both;
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.8s var(--ease-out-expo) infinite;
+  --animate-ecg: ecg-draw 2.6s var(--ease-out-expo) both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 28px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -12px, 0);
+    }
+  }
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.85);
+      opacity: 0.65;
+    }
+    100% {
+      transform: scale(1.9);
+      opacity: 0;
+    }
+  }
+  @keyframes ecg-draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------- Base ---------- */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem;
+    background-color: var(--color-pearl);
+  }
+
+  html[lang="ar"] {
+    --font-body: var(--font-plex-arabic), var(--font-jakarta);
+    --font-heading: var(--font-alexandria);
+    --leading-copy: 1.9;
+  }
+
+  html[lang="en"] {
+    --font-body: var(--font-jakarta);
+    --font-heading: var(--font-alexandria);
+    --leading-copy: 1.72;
+  }
+
+  body {
+    min-height: 100dvh;
+    background-color: var(--color-pearl);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: var(--leading-copy);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    line-height: 1.2;
+  }
+
+  html[lang="ar"] :is(h1, h2, h3, h4) {
+    line-height: 1.45;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-crimson);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-crimson);
+    outline-offset: 3px;
+  }
+
+  [data-surface="dark"] :focus-visible {
+    outline-color: #ffd1dd;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  summary {
+    cursor: pointer;
+  }
+
+  /* Lock page scroll while the modal mobile menu is open */
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+/* ---------- Layout ---------- */
+
+@utility shell {
+  width: 100%;
+  max-width: var(--container-site);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4.5vw, 2.75rem);
+}
+
+@utility section-y {
+  padding-block: clamp(4.5rem, 9vw, 8.5rem);
+}
+
+/* Small uppercase label above headings. Arabic must never be letter-spaced. */
+@utility eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.4;
+  &:where(:lang(en), :lang(en) *) {
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  &:where(:lang(ar), :lang(ar) *) {
+    font-size: 0.92rem;
+  }
+}
+
+@utility text-brand-gradient {
+  background-image: linear-gradient(100deg, var(--color-crimson) 0%, #a3005a 48%, var(--color-plum) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+@utility text-glow-gradient {
+  background-image: linear-gradient(100deg, #ffd6e1 0%, #ff8fb0 45%, #e3c4ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Surfaces (bright, tinted — never plain white) ---------- */
+
+@utility surface-pearl {
+  background-color: var(--color-pearl);
+}
+
+@utility surface-blush {
+  background: radial-gradient(60% 70% at 100% 0%, rgb(220 0 56 / 0.09), transparent 70%),
+    radial-gradient(55% 60% at 0% 100%, rgb(60 0 96 / 0.08), transparent 70%), var(--color-blush);
+}
+
+@utility surface-lilac {
+  background: radial-gradient(60% 70% at 0% 0%, rgb(60 0 96 / 0.1), transparent 70%),
+    radial-gradient(50% 60% at 100% 100%, rgb(220 0 56 / 0.08), transparent 70%), var(--color-lilac);
+}
+
+/* Rose → lavender wash */
+@utility surface-dawn {
+  background: linear-gradient(160deg, #fbeef3 0%, var(--color-blush) 30%, #f1e6f6 70%, var(--color-lilac) 100%);
+}
+
+/* Deep plum feature section */
+@utility surface-plum {
+  background: radial-gradient(70% 90% at 85% 10%, rgb(220 0 56 / 0.38), transparent 60%),
+    radial-gradient(60% 80% at 10% 100%, rgb(107 51 148 / 0.55), transparent 65%),
+    linear-gradient(160deg, var(--color-plum-800) 0%, var(--color-plum-900) 55%, var(--color-plum-950) 100%);
+  color: #fff;
+}
+
+/* Crimson → plum statement band */
+@utility surface-ember {
+  background: radial-gradient(80% 120% at 0% 0%, rgb(255 120 160 / 0.35), transparent 55%),
+    linear-gradient(120deg, var(--color-crimson) 0%, #a3004f 45%, var(--color-plum) 100%);
+  color: #fff;
+}
+
+/* ---------- Textures ---------- */
+
+/* Soft stippled grain — plum-tinted fractal noise */
+@utility grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .24 0 0 0 0 0 0 0 0 0 .38 0 0 0 .9 -.32'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* Dot matrix */
+@utility dots {
+  background-image: radial-gradient(circle at center, rgb(60 0 96 / 0.22) 1.1px, transparent 1.6px);
+  background-size: 22px 22px;
+}
+
+@utility dots-light {
+  background-image: radial-gradient(circle at center, rgb(255 255 255 / 0.28) 1.1px, transparent 1.6px);
+  background-size: 22px 22px;
+}
+
+/* Fine diagonal hatching used on image frames */
+@utility hatch {
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgb(220 0 56 / 0.18) 0 1px,
+    transparent 1px 9px
+  );
+}
+
+/* ---------- Liquid Glass ---------- */
+
+/* Light, rose-tinted glass for bright surfaces */
+@utility glass {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(140deg, rgb(255 255 255 / 0.72) 0%, rgb(248 234 240 / 0.52) 55%, rgb(238 229 245 / 0.5) 100%);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  backdrop-filter: blur(18px) saturate(1.6);
+  box-shadow: var(--shadow-glass);
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    background: linear-gradient(140deg, #fff8fb 0%, var(--color-blush) 60%, var(--color-lilac) 100%);
+  }
+}
+
+/* Tinted glass for use over photography and deep plum surfaces */
+@utility glass-dark {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(140deg, rgb(255 255 255 / 0.16) 0%, rgb(220 0 56 / 0.12) 45%, rgb(60 0 96 / 0.28) 100%);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.28), inset 0 -1px 0 0 rgb(255 255 255 / 0.06),
+    0 22px 50px -24px rgb(10 0 20 / 0.7);
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    background: linear-gradient(140deg, rgb(70 10 90 / 0.92), rgb(40 0 64 / 0.94));
+  }
+}
+
+/* Dual-tone hairline border (crimson → light → plum) drawn with a masked pseudo-element */
+@utility glass-edge {
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgb(220 0 56 / 0.6) 0%,
+      rgb(255 255 255 / 0.85) 38%,
+      rgb(255 255 255 / 0.3) 62%,
+      rgb(60 0 96 / 0.55) 100%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    pointer-events: none;
+  }
+}
+
+@utility glass-edge-dark {
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgb(255 140 175 / 0.85) 0%,
+      rgb(255 255 255 / 0.35) 40%,
+      rgb(255 255 255 / 0.08) 65%,
+      rgb(190 140 255 / 0.6) 100%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    pointer-events: none;
+  }
+}
+
+/* Specular sheen that sweeps across glass on hover */
+@utility sheen {
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -40% auto -40% -60%;
+    width: 45%;
+    transform: skewX(-18deg) translateX(0);
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.45), transparent);
+    opacity: 0;
+    transition:
+      transform 0.9s var(--ease-out-expo),
+      opacity 0.4s ease;
+    pointer-events: none;
+  }
+  &:hover::after {
+    opacity: 1;
+    transform: skewX(-18deg) translateX(420%);
+  }
+}
+
+/* ---------- Motion ---------- */
+
+/* Reveal-on-scroll: elements start shifted only when JS has marked the document as motion-ready. */
+@utility reveal {
+  transition:
+    opacity 0.9s var(--ease-out-expo),
+    transform 0.9s var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+  :where(html.js-motion) &:not([data-shown]) {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0);
+  }
+}
+
+/* Hero photo parallax via scroll-driven animation (progressive enhancement, no JS). */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .parallax-hero {
+      animation: hero-drift linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100vh;
+    }
+  }
+}
+
+@keyframes hero-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(var(--hero-scale, 1.08));
+  }
+  to {
+    transform: translate3d(0, 9%, 0) scale(var(--hero-scale, 1.08));
+  }
+}
+
+/* Smooth native <details> accordions where supported */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+  details.accordion::details-content {
+    block-size: 0;
+    overflow-y: clip;
+    transition:
+      block-size 0.45s var(--ease-out-expo),
+      content-visibility 0.45s allow-discrete;
+  }
+  details.accordion[open]::details-content {
+    block-size: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html.js-motion .reveal:not([data-shown]) {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Article typography ---------- */
+
+@utility prose-heart {
+  color: var(--color-ink-700);
+  font-size: 1.075rem;
+  & > * + * {
+    margin-top: 1.15em;
+  }
+  & h2 {
+    margin-top: 2.2em;
+    font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+    font-weight: 700;
+    color: var(--color-plum-700);
+  }
+  & h3 {
+    margin-top: 1.8em;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+  & ul {
+    padding-inline-start: 0;
+    list-style: none;
+  }
+  & ul > li {
+    position: relative;
+    padding-inline-start: 1.6em;
+  }
+  & ul > li + li {
+    margin-top: 0.55em;
+  }
+  & ul > li::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0.2em;
+    top: 0.72em;
+    width: 0.55em;
+    height: 0.55em;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--color-crimson), var(--color-plum));
+  }
+  & strong {
+    color: var(--color-ink);
+    font-weight: 700;
+  }
 }

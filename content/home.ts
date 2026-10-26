@@ -40,7 +40,6 @@ const homeAr = {
     quote: "الجراحة الناجحة تبدأ بمريض يفهم خطته ويثق بها.",
     quoteLabel: "مبدأ هايبرد هارتس",
     cta: "اقرأ عن الطبيب",
-    frameCaption: "Hybrid Hearts — Cardiac Surgery",
   },
   services: {
     eyebrow: "مجالات الرعاية",
@@ -121,7 +120,6 @@ export const home: L10n<typeof homeAr> = {
       quote: "Successful surgery starts with a patient who understands — and trusts — the plan.",
       quoteLabel: "The Hybrid Hearts principle",
       cta: "About the doctor",
-      frameCaption: "Hybrid Hearts — Cardiac Surgery",
     },
     services: {
       eyebrow: "Areas of care",

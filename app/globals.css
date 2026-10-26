@@ -129,13 +129,14 @@
     background-color: var(--color-pearl);
   }
 
-  html[lang="ar"] {
+  /* Keyed on any [lang] element (not only <html>) so dashboard previews render each language correctly. */
+  [lang="ar"] {
     --font-body: var(--font-plex-arabic), var(--font-jakarta);
     --font-heading: var(--font-alexandria);
     --leading-copy: 1.9;
   }
 
-  html[lang="en"] {
+  [lang="en"] {
     --font-body: var(--font-jakarta);
     --font-heading: var(--font-alexandria);
     --leading-copy: 1.72;
@@ -161,7 +162,7 @@
     line-height: 1.2;
   }
 
-  html[lang="ar"] :is(h1, h2, h3, h4) {
+  [lang="ar"] :is(h1, h2, h3, h4) {
     line-height: 1.45;
   }
 

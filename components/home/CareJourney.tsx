@@ -1,33 +1,29 @@
 import { ClipboardList, HeartHandshake, MessagesSquare, Sprout } from "lucide-react";
 import { EcgLine } from "@/components/EcgLine";
 import { SectionHeading } from "@/components/SectionHeading";
-import { home } from "@/content/home";
-import type { Locale } from "@/lib/i18n";
+import type { SectionProps } from "@/components/sections/types";
+import type { homeJourney } from "@/content/defaults";
 
 const icons = [ClipboardList, MessagesSquare, HeartHandshake, Sprout];
 
-/** Deep plum feature section: four-stage care journey joined by an ECG trace. */
-export function CareJourney({ lang }: { lang: Locale }) {
-  const t = home[lang].journey;
+/** Deep plum feature section: care journey steps joined by an ECG trace. */
+export function CareJourney({ c, sectionId }: SectionProps<typeof homeJourney>) {
+  const cols = c.steps.length >= 4 ? "lg:grid-cols-4" : c.steps.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2";
   return (
-    <section data-surface="dark" aria-labelledby="journey-title" className="surface-plum section-y relative isolate overflow-hidden">
+    <section id={sectionId} data-surface="dark" aria-labelledby={`${sectionId}-title`} className="surface-plum section-y relative isolate overflow-hidden">
       <div aria-hidden="true" className="absolute inset-0 -z-10 dots-light opacity-[0.16]" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 grain opacity-30 mix-blend-soft-light" />
       <div className="shell">
-        <SectionHeading id="journey-title" eyebrow={t.eyebrow} title={t.title} lead={t.lead} align="center" tone="dark" />
+        <SectionHeading id={`${sectionId}-title`} eyebrow={c.eyebrow} title={c.title} lead={c.lead} align="center" tone="dark" />
 
         <div className="relative mt-16">
-          <EcgLine
-            gradientId="journey-ecg"
-            animate={false}
-            className="pointer-events-none absolute inset-x-0 top-10 hidden h-16 w-full opacity-60 lg:block"
-          />
-          <ol className="relative grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {t.steps.map((step, i) => {
-              const Icon = icons[i];
+          <EcgLine gradientId={`${sectionId}-ecg`} animate={false} className="pointer-events-none absolute inset-x-0 top-10 hidden h-16 w-full opacity-60 lg:block" />
+          <ol className={`relative grid gap-5 sm:grid-cols-2 ${cols}`}>
+            {c.steps.map((step, i) => {
+              const Icon = icons[i % icons.length];
               return (
                 <li
-                  key={step.title}
+                  key={i}
                   className="reveal glass-dark glass-edge-dark relative rounded-[2rem] p-7 transition-transform duration-500 hover:-translate-y-1.5"
                   style={{ "--reveal-delay": `${i * 110}ms` } as React.CSSProperties}
                 >

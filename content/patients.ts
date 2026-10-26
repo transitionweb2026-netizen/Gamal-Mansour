@@ -29,6 +29,7 @@ const patientsAr = {
     eyebrow: "آراء وأسئلة",
     title: "أسئلتك تهمّنا، وتجاربكم تُلهمنا",
     lead: "إجابات واضحة عن أكثر الأسئلة تكرارًا، ومساحة لتجارب المرضى الموثّقة.",
+    imageAlt: "سمّاعة طبية وقلب أحمر على سطح فاتح",
   },
   reviews: {
     eyebrow: "تجارب المرضى",
@@ -39,7 +40,6 @@ const patientsAr = {
     shareTitle: "هل كنت من مرضانا؟",
     shareText: "يسعدنا أن تشاركنا تجربتك؛ فقد تكون عونًا لمريض آخر يستعد لرحلته.",
     shareCta: "شاركنا تجربتك",
-    verified: "رأي موثّق بموافقة المريض",
   },
   faq: {
     eyebrow: "الأسئلة الشائعة",
@@ -131,6 +131,7 @@ export const patients: L10n<typeof patientsAr> = {
       eyebrow: "Reviews & FAQ",
       title: "Your questions matter. Your stories inspire.",
       lead: "Clear answers to the questions we hear most often, and a space for verified patient experiences.",
+      imageAlt: "A stethoscope and a red heart on a light surface",
     },
     reviews: {
       eyebrow: "Patient experiences",
@@ -141,7 +142,6 @@ export const patients: L10n<typeof patientsAr> = {
       shareTitle: "Were you one of our patients?",
       shareText: "We would be glad to hear about your experience — it may help another patient preparing for their own journey.",
       shareCta: "Share your experience",
-      verified: "Verified review, shared with the patient's consent",
     },
     faq: {
       eyebrow: "Frequently asked questions",

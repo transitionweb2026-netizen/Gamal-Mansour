@@ -1,13 +1,14 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/content/site";
+import { getSite } from "@/lib/content/store";
 
 export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
+  const s = getSite().settings;
   return {
-    name: `${site.brand.en} — ${site.doctor.en}`,
-    short_name: site.brandShort.en,
-    description: "Dr. Gamal Mansour — Cardiac Surgery. Hybrid Hearts.",
+    name: `${s.brand.en} — ${s.doctor.en}`,
+    short_name: s.brandShort.en,
+    description: s.seo.defaultDescription.en,
     start_url: "/ar/",
     display: "standalone",
     background_color: "#fcf5f8",

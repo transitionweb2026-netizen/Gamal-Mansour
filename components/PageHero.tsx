@@ -1,17 +1,18 @@
 import { Breadcrumbs, type Crumb } from "@/components/Breadcrumbs";
 import { EcgLine } from "@/components/EcgLine";
 import { Photo } from "@/components/Photo";
-import type { PhotoName } from "@/lib/photos";
+import type { MediaRef } from "@/lib/cms/media";
 import type { Locale } from "@/lib/i18n";
 
 type Props = {
   lang: Locale;
+  sectionId?: string;
   eyebrow: string;
   title: React.ReactNode;
   lead?: React.ReactNode;
   crumbs: Crumb[];
-  photo: PhotoName;
-  photoAlt: string;
+  image: MediaRef;
+  imageAlt: string;
   /** "immersive" = full-bleed duotone photo; "editorial" = bright tinted panel with a framed photo. */
   variant?: "immersive" | "editorial";
   /** CSS object-position for the photo. */
@@ -21,10 +22,10 @@ type Props = {
   children?: React.ReactNode;
 };
 
-export function PageHero({ lang, eyebrow, title, lead, crumbs, photo, photoAlt, variant = "immersive", focus = "50% 50%", mirror = false, children }: Props) {
+export function PageHero({ lang, sectionId, eyebrow, title, lead, crumbs, image, imageAlt, variant = "immersive", focus = "50% 50%", mirror = false, children }: Props) {
   if (variant === "editorial") {
     return (
-      <section aria-labelledby="page-title" className="surface-dawn relative isolate overflow-hidden pt-32 pb-16 sm:pt-36 lg:pb-24">
+      <section id={sectionId} aria-labelledby="page-title" className="surface-dawn relative isolate overflow-hidden pt-32 pb-16 sm:pt-36 lg:pb-24">
         <div aria-hidden="true" className="absolute inset-0 -z-10 dots opacity-30 [mask-image:radial-gradient(70%_80%_at_80%_20%,black,transparent)]" />
         <div aria-hidden="true" className="absolute -top-40 -end-24 -z-10 size-[38rem] rounded-full bg-[radial-gradient(closest-side,rgb(220_0_56/0.18),transparent)]" />
         <div aria-hidden="true" className="absolute -bottom-56 -start-32 -z-10 size-[40rem] rounded-full bg-[radial-gradient(closest-side,rgb(60_0_96/0.16),transparent)]" />
@@ -46,15 +47,8 @@ export function PageHero({ lang, eyebrow, title, lead, crumbs, photo, photoAlt, 
           </div>
           <div className="relative mx-auto w-full max-w-md animate-rise [animation-delay:200ms] lg:max-w-none">
             <div aria-hidden="true" className="absolute inset-0 translate-x-3 translate-y-4 rotate-[2.5deg] rounded-[2.5rem] bg-[linear-gradient(140deg,var(--color-crimson),var(--color-plum))] rtl:-translate-x-3 rtl:-rotate-[2.5deg]" />
-            <div className="relative aspect-[5/4] overflow-hidden rounded-[2.5rem] shadow-lift">
-              <Photo
-                name={photo}
-                alt={photoAlt}
-                sizes="(min-width: 1024px) 40vw, 90vw"
-                priority
-                className="size-full object-cover"
-                style={{ objectPosition: focus }}
-              />
+            <div className="relative aspect-[5/4] overflow-hidden rounded-[2.5rem] bg-plum-900 shadow-lift">
+              <Photo media={image} alt={imageAlt} sizes="(min-width: 1024px) 40vw, 90vw" priority className="size-full object-cover" style={{ objectPosition: focus }} />
               <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(160deg,rgb(220_0_56/0.18),transparent_50%,rgb(60_0_96/0.4))] mix-blend-multiply" />
             </div>
             <EcgLine gradientId="page-hero-ecg" from="#dc0038" to="#3c0060" className="pointer-events-none absolute -bottom-8 -start-10 h-16 w-[70%] opacity-80" delay={500} />
@@ -66,6 +60,7 @@ export function PageHero({ lang, eyebrow, title, lead, crumbs, photo, photoAlt, 
 
   return (
     <section
+      id={sectionId}
       data-surface="dark"
       aria-labelledby="page-title"
       className="relative isolate flex min-h-[clamp(32rem,70svh,44rem)] overflow-hidden bg-plum-950 text-white"
@@ -73,8 +68,8 @@ export function PageHero({ lang, eyebrow, title, lead, crumbs, photo, photoAlt, 
       <div className="absolute inset-0 -z-20 overflow-hidden">
         <div className="parallax-hero absolute inset-0 origin-top [--hero-scale:1.06]">
           <Photo
-            name={photo}
-            alt={photoAlt}
+            media={image}
+            alt={imageAlt}
             sizes="100vw"
             priority
             className={`size-full object-cover grayscale contrast-[1.15] ${mirror ? "ltr:-scale-x-100" : ""}`}

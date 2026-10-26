@@ -1,4 +1,8 @@
 import type { NextConfig } from "next";
+import { assertPublicSupabaseKeys } from "./scripts/supabase-key-guard.mjs";
+
+// Never let a secret/service-role key reach the browser bundle (fails `next dev` and `next build`).
+assertPublicSupabaseKeys();
 
 const nextConfig: NextConfig = {
   // Static HTML export: `next build` writes a self-contained site to ./out

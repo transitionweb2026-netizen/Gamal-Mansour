@@ -4,17 +4,23 @@ Bilingual (Arabic RTL default / English LTR) website for Dr. Gamal Mansour's car
 **Hybrid Hearts**. It is a **fully static site**: the build produces plain HTML, CSS, JS and images that
 any static host can serve — no Node.js server, database or API is needed at runtime.
 
+All website content is editable in the **content dashboard at `/admin`**, backed by Supabase (database,
+storage, sign-in). Published content is built into the static pages — see **[docs/CMS.md](docs/CMS.md)**.
+
 ---
 
 ## Quick start
 
 ```bash
 npm install          # once
-npm run dev          # local development → http://localhost:3000/ar/
-npm run build        # production static export → ./out
+npm run dev          # local development → http://localhost:3000/ar/  (dashboard: /admin/)
+npm run build        # pull published CMS content, then static export → ./out
 npm run preview      # serve ./out locally exactly like a static host → http://localhost:4173
-npm run check        # lint + type-check + build
+npm run check        # lint + type-check + database tests + CMS checks + build
 ```
+
+Copy [`.env.example`](.env.example) to `.env.local` to connect Supabase. Without it the site builds from
+the bundled content and the dashboard runs as a clearly labelled local sandbox.
 
 Requires Node.js 20.9+ (built and tested with Node 26). Fonts are downloaded from Google Fonts **at build
 time** and self-hosted in the output, so the build machine needs internet access; visitors' browsers never
@@ -57,62 +63,52 @@ flat file names the client requests, causing harmless-but-noisy 404s). On Linux/
 ## Content still to confirm (placeholders)
 
 Nothing below has been invented. Until real details are supplied, the site shows clearly-marked placeholders
-or hides the element entirely — it never links to a made-up number or profile.
+or hides the element entirely — it never links to a made-up number or profile. Each item is filled in from
+the dashboard (`/admin`).
 
-| Item | Where | Current behaviour |
+| Item | Dashboard | Current behaviour |
 | --- | --- | --- |
 | Production domain | `NEXT_PUBLIC_SITE_URL` (build env) | Falls back to `https://hybrid-hearts.example` |
-| Phone number | `content/site.ts` → `contact.phone` | Shows `+20 1•• ••• ••••` with "booking number coming soon"; no `tel:` link |
-| WhatsApp number | `contact.whatsapp` | Hidden; the WhatsApp message composer is disabled with a note |
-| Email | `contact.email` | Hidden |
-| Online booking URL | `contact.bookingUrl` | Card shows "coming soon" |
-| Social profile URLs | `social[]` (Facebook, Instagram, YouTube, TikTok) | Icons render as non-clickable placeholders |
-| Clinic address, map link, hours | `locations[]` | Hidden; contact page says details will be published |
-| Official portrait | `site.portrait` | Branded heart-mark artwork frame (no stock "stand-in" person) |
-| Qualifications / experience | `content/about.ts` → `credentials`, `experience` | Section hidden; About shows a short note |
-| Patient testimonials | `content/patients.ts` → `testimonials` | Honest empty state; home section omitted |
-| Videos | `content/videos.ts` → `videos` | "In preparation" library with planned topics |
+| Phone number | Contact & social | Shows `+20 1•• ••• ••••` with "booking number coming soon"; no `tel:` link |
+| WhatsApp number | Contact & social | Hidden; the WhatsApp message composer is disabled with a note |
+| Email | Contact & social | Hidden |
+| Online booking URL | Contact & social | Card shows "coming soon" |
+| Social profile URLs | Contact & social (Facebook, Instagram, YouTube, TikTok) | Icons render as non-clickable placeholders |
+| Clinic address, map link, hours | Contact & social › Clinic locations | Hidden; contact page says details will be published |
+| Official portrait | Site settings › Official portrait | Branded heart-mark artwork frame (no stock "stand-in" person) |
+| Qualifications / experience | Pages › About the doctor › Qualifications & experience | Section hidden; About shows a short note |
+| Patient testimonials | Collections › Patient reviews (consent required) | Honest empty state; home section omitted |
+| Videos | Collections › Videos | "In preparation" library with planned topics |
 
 ### Verified vs. provisional content
 
 - **Verified (from the supplied logo):** doctor name *Dr. Gamal Mansour*, practice name *Hybrid Hearts*,
   specialty *Cardiac Surgery*, brand colours `#DC0038` / `#3C0060`.
 - **Provisional editorial copy (needs Dr. Mansour's approval):** all hero/home/about copy, the six service
-  areas (`status: "draft"` in `content/services.ts` — a public note asks patients to confirm availability),
-  FAQ answers, and the six Heart Library articles (`reviewStatus: "pending-medical-review"`). Articles contain
-  general, widely-accepted patient education only — no citations, statistics or outcome claims.
+  areas (each has a "Confirmed by the practice" switch in the dashboard; a public note asks patients to
+  confirm availability), FAQ answers, and the six Heart Library articles ("Medically reviewed" switch off).
+  Articles contain general, widely-accepted patient education only — no citations, statistics or outcome
+  claims.
 - **Assumption:** the emergency notice cites **123** (Egypt's ambulance number) alongside "your local
-  emergency number". Change it in `content/common.ts` if the practice is elsewhere.
+  emergency number". Change it in Global content › Emergency notice if the practice is elsewhere.
 
 ---
 
 ## Editing content
 
-All text lives in `/content` — one typed file per page, each with `ar` and `en` versions (TypeScript
-flags any missing translation):
+Use the **content dashboard at `/admin`**. It controls every page section (text, images, buttons and their
+destinations, order and visibility), the shared header/footer/menu/banners, contact details and social
+links, services, articles, videos, patient reviews, FAQ, SEO and the media library — with drafts, preview,
+publishing and revision history.
 
-| File | Contains |
-| --- | --- |
-| `content/site.ts` | Contact details, social links, locations, portrait, domain — **start here** |
-| `content/common.ts` | Navigation and shared UI strings, emergency notice, disclaimers |
-| `content/home.ts` | Home page copy |
-| `content/about.ts` | About page copy, credentials, experience |
-| `content/services.ts` | Service areas (title, summary, body, bullet points, image, related articles) |
-| `content/articles.ts` | Heart Library articles (sections, bullets, key takeaways) |
-| `content/videos.ts` | Published videos (YouTube IDs) and planned topics |
-| `content/patients.ts` | Testimonials and FAQ |
-| `content/contact.ts` | Contact page copy and WhatsApp composer labels |
-| `content/pages.ts` | Services/articles page headers and the appointment CTA band |
+- **Setup, roles, publishing and rebuilds:** [docs/CMS.md](docs/CMS.md)
+- **Every editable field and where it appears:** [docs/cms-content-inventory.md](docs/cms-content-inventory.md)
+- **Security model and verification:** [docs/cms-security.md](docs/cms-security.md)
+- **Coverage and test results:** [docs/cms-coverage.md](docs/cms-coverage.md)
 
-**Adding…**
-- *a video:* push `{ youtubeId, title, description, topic }` into `videos`. Playback uses a click-to-load
-  `youtube-nocookie.com` embed (no YouTube requests until the visitor presses play).
-- *a testimonial:* only with the patient's written consent — push into `testimonials`; it appears on the home
-  and Reviews pages with a "verified" label.
-- *an article:* add an object to `articles` with a unique `slug`; its pages for both languages, sitemap
-  entries and metadata are generated automatically.
-- *the portrait:* save it as e.g. `public/images/dr-gamal-mansour.webp` and set
-  `site.portrait = { src: "/images/dr-gamal-mansour.webp", width, height }`.
+The files in `/content` hold the **bundled default content** — the fallback when no CMS content is
+published and the source of the initial import. Edit them only to change those defaults; afterwards run
+`npm run cms:seed-sql` and `npm run cms:inventory`, and `npm run check` confirms everything still lines up.
 
 ---
 
@@ -123,7 +119,13 @@ flags any missing translation):
   Not used (incompatible with static hosting): API routes, Server Actions, proxy/middleware, ISR, runtime
   image optimisation, Cache Components.
 - **Routing:** `app/[lang]/…` is the root layout (sets `<html lang dir>`); `app/(root)` is the `/` language
-  gateway; `app/global-not-found.tsx` is the bilingual 404.
+  gateway; `app/global-not-found.tsx` is the bilingual 404; `app/admin` is the dashboard (static, client-side,
+  `noindex`).
+- **CMS:** `lib/cms/registry.ts` maps every page, section, shared section and collection to its renderer,
+  dashboard form and database record. At build time `scripts/cms-pull.mjs` reads published content from
+  Supabase (`cms_public_snapshot()`, public key, RLS) into `content/published.json`, which `buildSite()`
+  merges over the bundled defaults. Pages render their sections in the saved order via
+  `components/PageView.tsx`; the dashboard's draft preview uses the same components.
 - **i18n:** hand-rolled and dependency-free (`lib/i18n.ts`). The language switch links to the same page in the
   other language (all routes and article slugs exist in both).
 - **Styling:** Tailwind CSS v4. All design tokens are in `app/globals.css` (`@theme`): official colours,

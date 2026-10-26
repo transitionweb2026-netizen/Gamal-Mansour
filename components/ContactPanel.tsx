@@ -1,7 +1,6 @@
 import { Phone } from "lucide-react";
 import { SocialLinks } from "@/components/SocialLinks";
-import { common } from "@/content/common";
-import { phoneDisplay, telHref } from "@/content/site";
+import { contactInfo, globalFor } from "@/lib/content/access";
 import type { Locale } from "@/lib/i18n";
 
 /**
@@ -9,8 +8,9 @@ import type { Locale } from "@/lib/i18n";
  * Below 440px the same capsule stacks into two rows with a horizontal divider so nothing clips.
  */
 export function ContactPanel({ lang, className = "" }: { lang: Locale; className?: string }) {
-  const t = common[lang];
-  const tel = telHref();
+  const t = globalFor("contactPanel", lang);
+  const contact = contactInfo();
+  const tel = contact.tel;
 
   const phoneInner = (
     <>
@@ -21,7 +21,7 @@ export function ContactPanel({ lang, className = "" }: { lang: Locale; className
       <span className="flex min-w-0 flex-col leading-tight">
         <span className="text-[0.72rem] font-medium text-white/70">{tel ? t.phoneLabel : t.phoneComingSoon}</span>
         <span dir="ltr" className="mt-1 text-[1.02rem] font-bold tracking-wide whitespace-nowrap text-white tabular-nums">
-          {phoneDisplay()}
+          {contact.phoneDisplay}
         </span>
       </span>
     </>
@@ -31,11 +31,7 @@ export function ContactPanel({ lang, className = "" }: { lang: Locale; className
     <div
       className={`glass-dark glass-edge-dark inline-flex w-full max-w-full flex-col items-stretch rounded-[1.6rem] p-2 min-[440px]:w-auto min-[440px]:flex-row min-[440px]:items-center min-[440px]:rounded-full ${className}`}
     >
-      <SocialLinks
-        label={t.socialLabel}
-        comingSoon={t.socialComingSoon}
-        className="justify-center px-1 min-[440px]:justify-start"
-      />
+      <SocialLinks label={t.socialLabel} comingSoon={t.socialComingSoon} className="justify-center px-1 min-[440px]:justify-start" />
 
       {/* Mandatory separator: vertical on the horizontal layout, horizontal when stacked */}
       <span
@@ -47,7 +43,7 @@ export function ContactPanel({ lang, className = "" }: { lang: Locale; className
         <a
           href={tel}
           className="group flex items-center justify-center gap-3 rounded-full py-0.5 ps-1 pe-4 transition-colors hover:bg-white/[0.07] min-[440px]:justify-start"
-          aria-label={`${t.callUs}: ${phoneDisplay()}`}
+          aria-label={`${t.callUs}: ${contact.phoneDisplay}`}
         >
           {phoneInner}
         </a>

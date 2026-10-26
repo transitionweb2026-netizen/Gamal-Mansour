@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { CalendarHeart, Menu, X } from "lucide-react";
-import { Logo } from "@/components/Logo";
+import { Logo, type LogoAsset } from "@/components/Logo";
 import { LanguageSwitch } from "@/components/layout/LanguageSwitch";
 import { localePath, type Locale } from "@/lib/i18n";
 
@@ -16,21 +16,27 @@ type Labels = {
   openMenu: string;
   closeMenu: string;
   bookAppointment: string;
-  bookShort: string;
   switchLanguage: string;
 };
 
 const trim = (p: string) => (p.length > 1 ? p.replace(/\/+$/, "") : p);
 
+/** Client component: receives everything as props so no site content enters the browser bundle. */
 export function SiteHeader({
   lang,
   items,
   labels,
+  logo,
+  logoLabel,
+  bookHref,
   menuFooter,
 }: {
   lang: Locale;
   items: HeaderItem[];
   labels: Labels;
+  logo: LogoAsset;
+  logoLabel: string;
+  bookHref: string;
   /** Server-rendered extras for the mobile menu (contact panel, social). */
   menuFooter?: React.ReactNode;
 }) {
@@ -57,7 +63,8 @@ export function SiteHeader({
     return target === trim(localePath(lang)) ? pathname === target : pathname === target || pathname.startsWith(`${target}/`);
   };
 
-  const contactHref = localePath(lang, "contact");
+  const contactHref = bookHref;
+  const homeHref = localePath(lang);
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-2.5 pt-2.5 sm:px-5 sm:pt-4">
@@ -66,7 +73,7 @@ export function SiteHeader({
           scrolled ? "py-1.5 shadow-lift" : "py-2 sm:py-2.5"
         }`}
       >
-        <Logo lang={lang} priority className={`w-auto transition-[height] duration-500 ${scrolled ? "h-10" : "h-11 sm:h-12"}`} />
+        <Logo href={homeHref} label={logoLabel} logo={logo} priority className={`w-auto transition-[height] duration-500 ${scrolled ? "h-10" : "h-11 sm:h-12"}`} />
 
         <nav aria-label={labels.mainNav} className="ms-auto hidden xl:block">
           <ul className="flex items-center gap-0.5">
@@ -135,7 +142,7 @@ export function SiteHeader({
         <div className="surface-dawn ms-auto flex h-full w-full max-w-md flex-col overflow-y-auto shadow-lift transition-transform duration-500 ease-[var(--ease-out-expo)] in-open:translate-x-0 starting:in-open:translate-x-8 rtl:starting:in-open:-translate-x-8">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 grain opacity-[0.18]" />
           <div className="relative flex items-center justify-between gap-3 px-5 pt-5">
-            <Logo lang={lang} className="h-11 w-auto" />
+            <Logo href={homeHref} label={logoLabel} logo={logo} className="h-11 w-auto" />
             <button
               type="button"
               onClick={() => dialogRef.current?.close()}

@@ -1,13 +1,14 @@
 import { Plus } from "lucide-react";
-import type { Faq } from "@/content/patients";
+
+export type FaqEntry = { q: string; a: string[] };
 
 /** Native <details> accordion: keyboard and screen-reader accessible with no JavaScript. */
-export function FaqAccordion({ items, idPrefix }: { items: Faq[]; idPrefix: string }) {
+export function FaqAccordion({ items, idPrefix }: { items: FaqEntry[]; idPrefix: string }) {
   return (
     <div className="space-y-3">
       {items.map((item, i) => (
         <details
-          key={item.q}
+          key={i}
           id={`${idPrefix}-${i + 1}`}
           className="accordion group glass glass-edge reveal rounded-[1.6rem] transition-shadow duration-300 open:shadow-lift"
         >
@@ -21,8 +22,8 @@ export function FaqAccordion({ items, idPrefix }: { items: Faq[]; idPrefix: stri
             </span>
           </summary>
           <div className="space-y-3 px-6 pb-6 text-ink-700">
-            {item.a.map((p) => (
-              <p key={p.slice(0, 32)}>{p}</p>
+            {item.a.map((p, n) => (
+              <p key={n}>{p}</p>
             ))}
           </div>
         </details>

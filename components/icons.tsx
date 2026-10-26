@@ -1,7 +1,7 @@
 import { siFacebook, siInstagram, siTiktok, siWhatsapp, siX, siYoutube } from "simple-icons";
-import type { SocialId } from "@/content/site";
+import type { SocialPlatform } from "@/content/site";
 
-const brandPaths: Record<SocialId | "whatsapp", string> = {
+const brandPaths: Record<SocialPlatform | "whatsapp", string> = {
   facebook: siFacebook.path,
   instagram: siInstagram.path,
   youtube: siYoutube.path,
@@ -10,7 +10,7 @@ const brandPaths: Record<SocialId | "whatsapp", string> = {
   whatsapp: siWhatsapp.path,
 };
 
-export function BrandIcon({ name, className }: { name: SocialId | "whatsapp"; className?: string }) {
+export function BrandIcon({ name, className }: { name: SocialPlatform | "whatsapp"; className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" className={className}>
       <path d={brandPaths[name]} />

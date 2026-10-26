@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { common } from "@/content/common";
-import { absoluteUrl, jsonLd } from "@/lib/seo";
+import { absoluteUrl, globalFor } from "@/lib/content/access";
+import { jsonLd } from "@/lib/seo";
 import { localePath, type Locale } from "@/lib/i18n";
 
 export type Crumb = { label: string; path?: string };
 
 /** Visible breadcrumb trail + BreadcrumbList structured data. Last crumb is the current page. */
 export function Breadcrumbs({ lang, items, tone = "dark" }: { lang: Locale; items: Crumb[]; tone?: "dark" | "light" }) {
-  const t = common[lang];
+  const t = globalFor("ui", lang);
   const all: Crumb[] = [{ label: t.breadcrumbHome, path: "" }, ...items];
   const Sep = lang === "ar" ? ChevronLeft : ChevronRight;
   const data = {

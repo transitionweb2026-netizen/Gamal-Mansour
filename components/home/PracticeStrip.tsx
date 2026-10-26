@@ -1,27 +1,28 @@
 import Link from "next/link";
 import { CalendarHeart, HeartPulse, MapPin, Stethoscope } from "lucide-react";
-import { home } from "@/content/home";
-import { site } from "@/content/site";
-import { localePath, type Locale } from "@/lib/i18n";
+import type { SectionProps } from "@/components/sections/types";
+import type { homeStrip } from "@/content/defaults";
+import { settingsFor } from "@/lib/content/access";
+import { localePath } from "@/lib/i18n";
 
 /** Key practice facts — only verified details; unconfirmed ones point to the contact page. */
-export function PracticeStrip({ lang }: { lang: Locale }) {
-  const t = home[lang].strip;
-  const loc = site.locations[0];
+export function PracticeStrip({ lang, c, sectionId }: SectionProps<typeof homeStrip>) {
+  const s = settingsFor(lang);
+  const loc = s.locations[0];
   const items = [
-    { icon: Stethoscope, label: t.specialty, value: site.specialty[lang] },
-    { icon: HeartPulse, label: t.practice, value: site.brandShort[lang] },
-    { icon: CalendarHeart, label: t.booking, value: t.bookingValue },
+    { icon: Stethoscope, label: c.specialty, value: s.specialty },
+    { icon: HeartPulse, label: c.practice, value: s.brandShort },
+    { icon: CalendarHeart, label: c.booking, value: c.bookingValue },
     {
       icon: MapPin,
-      label: t.location,
-      value: loc ? loc.address[lang] : t.locationPending,
-      href: loc ? undefined : localePath(lang, "contact"),
+      label: c.location,
+      value: loc?.address ? loc.address : c.locationPending,
+      href: loc?.address ? undefined : localePath(lang, "contact"),
     },
   ];
 
   return (
-    <section id="practice-info" aria-label={t.label} className="surface-blush relative isolate overflow-hidden py-10 sm:py-14">
+    <section id={sectionId} aria-label={c.label} className="surface-blush relative isolate overflow-hidden py-10 sm:py-14">
       <div aria-hidden="true" className="absolute inset-0 -z-10 dots opacity-40 [mask-image:radial-gradient(70%_100%_at_50%_0%,black,transparent)]" />
       <div className="shell">
         <ul className="reveal glass glass-edge grid grid-cols-1 gap-1 rounded-[2rem] p-2 min-[480px]:grid-cols-2 lg:grid-cols-4 lg:rounded-full">
@@ -45,7 +46,7 @@ export function PracticeStrip({ lang }: { lang: Locale }) {
               </>
             );
             return (
-              <li key={item.label} className="relative">
+              <li key={i} className="relative">
                 {i > 0 ? (
                   <span aria-hidden="true" className="absolute inset-y-4 start-0 hidden w-px bg-gradient-to-b from-transparent via-plum-700/20 to-transparent lg:block" />
                 ) : null}

@@ -60,6 +60,7 @@ const videosPageAr = {
     eyebrow: "فيديوهات",
     title: "صحة القلب بالصوت والصورة",
     lead: "شروحات قصيرة وواضحة تساعدك على فهم حالتك والاستعداد لخطوتك التالية.",
+    imageAlt: "شاشة تعرض خط تخطيط القلب",
   },
   featured: {
     badge: "قيد الإعداد",
@@ -87,6 +88,7 @@ export const videosPage: L10n<typeof videosPageAr> = {
       eyebrow: "Videos",
       title: "Heart health, seen and heard",
       lead: "Short, clear explanations to help you understand your condition and prepare for your next step.",
+      imageAlt: "A screen showing an ECG trace",
     },
     featured: {
       badge: "In preparation",

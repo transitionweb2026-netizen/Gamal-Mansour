@@ -1,12 +1,13 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/content/site";
+import { SITE_URL } from "@/content/site";
 
 export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [{ userAgent: "*", allow: "/" }],
-    sitemap: `${site.url}/sitemap.xml`,
-    host: site.url,
+    // The admin dashboard is a private tool: keep it out of search results.
+    rules: [{ userAgent: "*", allow: "/", disallow: "/admin/" }],
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

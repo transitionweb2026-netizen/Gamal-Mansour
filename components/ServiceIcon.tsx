@@ -1,17 +1,26 @@
 import { Activity, ClipboardCheck, Combine, HeartPulse, Stethoscope, Waypoints } from "lucide-react";
-import type { ServiceIconName } from "@/content/services";
 
-const map = {
+/** Icons a service can use (selectable in the dashboard). */
+export const serviceIconOptions = [
+  { value: "stethoscope", label: "Stethoscope" },
+  { value: "heart-pulse", label: "Heart pulse" },
+  { value: "activity", label: "Activity / ECG" },
+  { value: "combine", label: "Combined / hybrid" },
+  { value: "waypoints", label: "Pathway" },
+  { value: "clipboard-check", label: "Checklist" },
+] as const;
+
+const map: Record<string, React.ComponentType<{ className?: string }>> = {
   stethoscope: Stethoscope,
   "heart-pulse": HeartPulse,
   activity: Activity,
   combine: Combine,
   waypoints: Waypoints,
   "clipboard-check": ClipboardCheck,
-} satisfies Record<ServiceIconName, React.ComponentType<{ className?: string }>>;
+};
 
-export function ServiceIcon({ name, className = "size-6" }: { name: ServiceIconName; className?: string }) {
-  const Icon = map[name];
+export function ServiceIcon({ name, className = "size-6" }: { name: string; className?: string }) {
+  const Icon = map[name] ?? Stethoscope;
   return <Icon className={className} aria-hidden="true" />;
 }
 

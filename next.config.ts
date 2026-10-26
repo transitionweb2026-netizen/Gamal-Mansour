@@ -1,4 +1,6 @@
 import type { NextConfig } from "next";
+import { PHASE_DEVELOPMENT_SERVER } from "next/constants";
+import { startCmsDevSync } from "./scripts/cms-dev-sync.mjs";
 import { assertPublicSupabaseKeys } from "./scripts/supabase-key-guard.mjs";
 
 // Never let a secret/service-role key reach the browser bundle (fails `next dev` and `next build`).
@@ -28,4 +30,8 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default function config(phase: string): NextConfig {
+  // `next dev` follows CMS publishes: content/published.json is refreshed every few seconds.
+  if (phase === PHASE_DEVELOPMENT_SERVER) startCmsDevSync();
+  return nextConfig;
+}

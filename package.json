@@ -4,7 +4,7 @@
   "private": true,
   "description": "Static bilingual (Arabic/English) website for Dr. Gamal Mansour — Hybrid Hearts Cardiac Surgery.",
   "scripts": {
-    "dev": "node scripts/dev.mjs",
+    "dev": "next dev",
     "build": "node scripts/cms-pull.mjs && next build && node scripts/fix-export-segments.mjs",
     "preview": "node scripts/serve-out.mjs",
     "lint": "eslint",

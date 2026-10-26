@@ -140,7 +140,7 @@
             "primaryHref": "/contact",
             "headlineLead": {
               "ar": "دقّة في الجراحة،",
-              "en": "Precision in surgery."
+              "en": "."
             },
             "secondaryHref": "/services",
             "headlineAccent": {
@@ -3138,5 +3138,5 @@
       "initialized": true
     }
   },
-  "generatedAt": "2026-10-26T10:32:32.454485+00:00"
+  "generatedAt": "2026-10-26T12:27:19.853488+00:00"
 }

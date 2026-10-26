@@ -1,4 +1,4 @@
-// Shared by scripts/cms-pull.mjs (build) and scripts/dev.mjs (development sync).
+// Shared by scripts/cms-pull.mjs (build) and scripts/cms-dev-sync.mjs (development sync).
 // Reads PUBLISHED content through the read-only `cms_public_snapshot()` function with the
 // public/publishable key. Drafts and private settings are never fetched.
 import fs from "node:fs";

@@ -44,15 +44,7 @@ export function ServicesBento({ lang, c, sectionId }: SectionProps<typeof homeSe
               <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgb(20_0_33/0.95)_8%,rgb(44_0_71/0.6)_50%,rgb(220_0_56/0.15)_100%)]" />
               <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(135deg,rgb(220_0_56/0.35),transparent_45%)] mix-blend-screen" />
               <div className="mt-auto flex flex-col p-7 sm:p-10">
-                {c.featuredTag ? (
-                  <span className="glass-dark glass-edge-dark inline-flex w-fit items-center gap-2 rounded-full py-1.5 ps-1.5 pe-4 text-sm font-semibold">
-                    <span className="grid size-7 place-items-center rounded-full bg-crimson">
-                      <ServiceIcon name={featured.icon} className="size-4" />
-                    </span>
-                    {c.featuredTag}
-                  </span>
-                ) : null}
-                <h3 className="mt-5 max-w-lg text-[clamp(1.6rem,3vw,2.4rem)] font-bold">
+                <h3 className="max-w-lg text-[clamp(1.6rem,3vw,2.4rem)] font-bold">
                   <Link href={serviceHref(featured.slug)} className="after:absolute after:inset-0 focus-visible:outline-none">
                     {featured.title}
                   </Link>

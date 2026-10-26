@@ -110,7 +110,7 @@
             },
             "badge": {
               "ar": "هايبرد هارتس · جراحة القلب",
-              "en": "Hybrid Hearts · Cardiac Surgery"
+              "en": "sss"
             },
             "image": "local:hero-team",
             "scroll": {
@@ -3138,5 +3138,5 @@
       "initialized": true
     }
   },
-  "generatedAt": "2026-10-26T09:23:04.214254+00:00"
+  "generatedAt": "2026-10-26T10:32:32.454485+00:00"
 }

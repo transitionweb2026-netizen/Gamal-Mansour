@@ -60,7 +60,6 @@ type Refine = Partial<Omit<Field, "key" | "path" | "fields" | "item">>;
 const byKey: Record<string, Refine> = {
   eyebrow: { label: "Eyebrow", help: "Small label above the title.", max: 40 },
   title: { label: "Title", max: 90 },
-  subtitle: { label: "Subtitle", max: 80 },
   lead: { label: "Introduction", kind: "textarea", max: 260 },
   text: { label: "Text", kind: "textarea" },
   label: { label: "Label", max: 60 },
@@ -104,7 +103,6 @@ const byKey: Record<string, Refine> = {
   cardText: { label: "Floating card — text", max: 30 },
   chip1: { label: "Floating label 1", max: 30 },
   chip2: { label: "Floating label 2", max: 30 },
-  featuredTag: { label: "Featured card tag", max: 30 },
   featuredSlug: { label: "Featured service", kind: "select", optionsFrom: "services", help: "Shown as the large photo card here and highlighted on the Services page." },
   bring: { label: "Companion note", kind: "textarea" },
   emptyTitle: { label: "Title when there are no reviews" },

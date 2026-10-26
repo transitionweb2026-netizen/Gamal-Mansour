@@ -1,4 +1,4 @@
-import { ArrowDown, CalendarHeart, HeartPulse } from "lucide-react";
+import { ArrowDown, CalendarHeart } from "lucide-react";
 import { Photo } from "@/components/Photo";
 import { ButtonLink } from "@/components/Button";
 import { ContactPanel } from "@/components/ContactPanel";
@@ -68,16 +68,7 @@ export function Hero({ lang, c, sectionId, nextId }: SectionProps<typeof homeHer
 
       <div className="shell relative flex w-full flex-col justify-end pt-28 pb-8 sm:pb-10 lg:pb-12">
         <div className="max-w-[50rem]">
-          {c.badge ? (
-            <p className="glass-dark glass-edge-dark inline-flex animate-rise items-center gap-2.5 rounded-full py-1.5 ps-1.5 pe-4 text-[0.86rem] font-semibold text-white [animation-delay:60ms]">
-              <span className="grid size-7 place-items-center rounded-full bg-crimson shadow-glow-crimson">
-                <HeartPulse className="size-4" aria-hidden="true" />
-              </span>
-              {c.badge}
-            </p>
-          ) : null}
-
-          <h1 id="hero-title" className="mt-5 font-bold">
+          <h1 id="hero-title" className="font-bold">
             <span className="block animate-rise text-[clamp(1.05rem,1.7vw,1.25rem)] font-semibold text-white/85 [animation-delay:140ms]">
               {s.doctor} <span className="text-crimson-300">—</span> {s.specialty}
             </span>

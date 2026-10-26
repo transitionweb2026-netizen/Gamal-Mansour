@@ -10,7 +10,6 @@ const homeAr = {
       "د. جمال منصور — جراحة القلب. استشارات جراحية ورعاية متكاملة لمرضى القلب من التشخيص حتى التعافي، بشرح واضح وقرار مشترك.",
   },
   hero: {
-    badge: "هايبرد هارتس · جراحة القلب",
     headlineLead: "دقّة في الجراحة،",
     headlineAccent: "وطمأنينة في كل خطوة",
     lead: "نرافقك من الاستشارة الأولى حتى التعافي، بشرح واضح لكل خيار وخطة مصمّمة لقلبك، لتتخذ قرارك وأنت مطمئن.",
@@ -46,7 +45,6 @@ const homeAr = {
     title: "رعاية جراحية للقلب، من التقييم إلى التعافي",
     lead: "مجالات رئيسية تغطي أمراض القلب التي قد تحتاج إلى تقييم جراحي. اختر المجال لتعرف ما يتضمّنه.",
     cta: "جميع الخدمات",
-    featuredTag: "مقاربة هجينة",
   },
   journey: {
     eyebrow: "فلسفة الرعاية",
@@ -90,7 +88,6 @@ export const home: L10n<typeof homeAr> = {
         "Dr. Gamal Mansour — Cardiac Surgery. Surgical consultations and complete heart care from diagnosis through recovery, with clear explanations and shared decisions.",
     },
     hero: {
-      badge: "Hybrid Hearts · Cardiac Surgery",
       headlineLead: "Precision in surgery.",
       headlineAccent: "Reassurance at every step.",
       lead: "From your first consultation through recovery, every option is explained clearly and your plan is built around your heart — so you can decide with confidence.",
@@ -126,7 +123,6 @@ export const home: L10n<typeof homeAr> = {
       title: "Cardiac surgical care, from assessment to recovery",
       lead: "Core areas covering heart conditions that may need a surgical assessment. Choose one to see what it involves.",
       cta: "All services",
-      featuredTag: "Hybrid approach",
     },
     journey: {
       eyebrow: "Philosophy of care",

@@ -12,12 +12,12 @@ Coverage is enforced by `npm run cms:verify` (part of `npm run check`): every va
 | Page sections (reorderable; optional ones can be hidden) | 45 |
 | Shared sections (edited once, shown on several pages) | 8 |
 | Collections | 5 (6 services, 6 articles, 0 videos, 0 reviews, 9 faqs) |
-| Editable fields — page sections | 211 |
+| Editable fields — page sections | 208 |
 | Editable fields — page SEO | 49 |
 | Editable fields — shared sections | 43 |
 | Editable fields — site settings | 24 |
 | Editable fields — per collection item | 43 (× 21 items) |
-| Bilingual (Arabic + English) fields | 285 |
+| Bilingual (Arabic + English) fields | 282 |
 | Image / video fields | 28 |
 | Link / button destination fields | 21 |
 
@@ -58,7 +58,6 @@ Full-width cover photo, headline, buttons and the social/phone panel.
 
 | Field | Label | Type | Current value (EN / shared) | Current value (AR) |
 | --- | --- | --- | --- | --- |
-| `badge` | Badge | text · AR/EN | Hybrid Hearts · Cardiac Surgery | هايبرد هارتس · جراحة القلب |
 | `headlineLead` | Headline — first line | text · AR/EN | Precision in surgery. | دقّة في الجراحة، |
 | `headlineAccent` | Headline — highlighted line | text · AR/EN | Reassurance at every step. | وطمأنينة في كل خطوة |
 | `lead` | Introduction | textarea · AR/EN | From your first consultation through recovery, every option is explai… | نرافقك من الاستشارة الأولى حتى التعافي، بشرح واضح لكل خيار وخطة مصمّم… |
@@ -110,7 +109,6 @@ Bento grid of services with one featured photo card. Displays items from: servic
 | `title` | Title | text · AR/EN | Cardiac surgical care, from assessment to recovery | رعاية جراحية للقلب، من التقييم إلى التعافي |
 | `lead` | Introduction | textarea · AR/EN | Core areas covering heart conditions that may need a surgical assessm… | مجالات رئيسية تغطي أمراض القلب التي قد تحتاج إلى تقييم جراحي. اختر ال… |
 | `cta` | Button label | text · AR/EN | All services | جميع الخدمات |
-| `featuredTag` | Featured card tag | text · AR/EN | Hybrid approach | مقاربة هجينة |
 | `featuredSlug` | Featured service | select | hybrid-procedures |  |
 | `ctaHref` | Button destination | url | /services |  |
 
@@ -197,7 +195,6 @@ Full-width duotone photo with the doctor's name.
 | --- | --- | --- | --- | --- |
 | `eyebrow` | Eyebrow | text · AR/EN | About the doctor | عن الطبيب |
 | `title` | Title | text · AR/EN | Dr. Gamal Mansour | د. جمال منصور |
-| `subtitle` | Subtitle | text · AR/EN | Cardiac Surgery · Hybrid Hearts | جراحة القلب · هايبرد هارتس |
 | `lead` | Introduction | textarea · AR/EN | Cardiac surgical care built on listening, honest explanation, and dec… | رعاية جراحية للقلب تقوم على الإصغاء، والشرح الصريح، والقرار المشترك م… |
 | `imageAlt` | Image description (alt text) | textarea · AR/EN | A black-and-white operating room with a surgical team and monitoring … | غرفة عمليات بالأبيض والأسود تضم فريقًا جراحيًا وأجهزة مراقبة (صورة تو… |
 | `image` | Image | media | local:or-monochrome |  |

@@ -21,9 +21,7 @@ export function AboutHero({ lang, c, sectionId }: SectionProps<typeof aboutHero>
       imageAlt={c.imageAlt}
       focus={c.imageFocus}
       mirror
-    >
-      {c.subtitle ? <span className="glass-dark glass-edge-dark inline-flex rounded-full px-5 py-2.5 text-sm font-semibold">{c.subtitle}</span> : null}
-    </PageHero>
+    />
   );
 }
 

@@ -22,7 +22,6 @@ const aboutAr = {
   hero: {
     eyebrow: "عن الطبيب",
     title: "د. جمال منصور",
-    subtitle: "جراحة القلب · هايبرد هارتس",
     lead: "رعاية جراحية للقلب تقوم على الإصغاء، والشرح الصريح، والقرار المشترك مع المريض وأسرته.",
     imageAlt: "غرفة عمليات بالأبيض والأسود تضم فريقًا جراحيًا وأجهزة مراقبة (صورة توضيحية)",
   },
@@ -77,7 +76,6 @@ export const about: L10n<typeof aboutAr> = {
     hero: {
       eyebrow: "About the doctor",
       title: "Dr. Gamal Mansour",
-      subtitle: "Cardiac Surgery · Hybrid Hearts",
       lead: "Cardiac surgical care built on listening, honest explanation, and decisions shared with patients and their families.",
       imageAlt: "A black-and-white operating room with a surgical team and monitoring equipment (illustrative photo)",
     },

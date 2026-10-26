@@ -13,7 +13,7 @@ storage, sign-in). Published content is built into the static pages — see **[d
 
 ```bash
 npm install          # once
-npm run dev          # local development → http://localhost:3000/ar/  (dashboard: /admin/)
+npm run dev          # local development → http://localhost:3000/ar/  (dashboard: /admin/; follows CMS publishes)
 npm run build        # pull published CMS content, then static export → ./out
 npm run preview      # serve ./out locally exactly like a static host → http://localhost:4173
 npm run check        # lint + type-check + database tests + CMS checks + build

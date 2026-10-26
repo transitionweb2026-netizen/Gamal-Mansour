@@ -179,8 +179,14 @@ People can change their password with **Forgot password** on the sign-in page.
    - only for signed-in editors
 4. **Publish** the section, item or settings. **Publish page** publishes all of a page's sections, its
    order and visibility, and its SEO together.
-5. **Rebuild** the website: run the build hook, or `npm run build` and deploy. The Overview and System
-   status screens say when published content differs from what the current build shows.
+5. **See it on the website:**
+   - **Locally:** with `npm run dev` running, published changes appear on the open pages within about
+     5 seconds.
+   - **On the live (static) site:** rebuild it with the build hook, or run `npm run build` and deploy. The
+     Overview and System status screens say when published content differs from what the current build
+     shows.
+
+   Saving a draft alone never changes the website, in either place.
 
 You can also:
 
@@ -240,7 +246,7 @@ Published media are linked from Supabase Storage's public URLs. Bundled photos s
 
 | Command | What it does |
 | --- | --- |
-| `npm run dev` | Development server; the dashboard is at `http://localhost:3000/admin/` |
+| `npm run dev` | Development server; the dashboard is at `http://localhost:3000/admin/`. With Supabase configured it pulls published content on start and every 5 s (`CMS_DEV_POLL_SECONDS`), so publishes appear without a rebuild. |
 | `npm run build` | `cms:pull` → static export to `./out` |
 | `npm run preview` | Serve `./out` like a static host (`http://localhost:4173`) |
 | `npm run check` | Lint, type-check, database tests, CMS checks, build |
@@ -262,7 +268,7 @@ Published media are linked from Supabase Storage's public URLs. Bundled photos s
 | "This link is invalid or has expired" | Request a new link from the sign-in page. For links that work across browsers, set up the email templates in 2.4. |
 | Build stops at `cms:pull — FAILED…` | Check the project URL/key and that the migration is applied, or build from bundled content with `CMS_PULL=off`. |
 | Build stops with "must be the publishable (or legacy anon) key" | A secret key was put in a public variable. Remove it and rotate that key in Supabase. |
-| Published changes don't show on the site | Rebuild and redeploy; System status shows whether the build is current. |
+| Published changes don't show on the site | Locally: make sure the dev server was started with `npm run dev`, not `next dev`; it pulls new publishes every 5 s. Live site: rebuild and redeploy; System status shows whether the build is current. Also check the item was **published**, not only saved. |
 
 ---
 

@@ -702,23 +702,6 @@
       "sectionKey": "hero",
       "component": "components/home/Hero.tsx",
       "dashboard": "/admin/pages/edit/?id=home&section=hero",
-      "field": "badge",
-      "label": "Badge",
-      "type": "text",
-      "localized": true,
-      "value": {
-        "ar": "هايبرد هارتس · جراحة القلب",
-        "en": "Hybrid Hearts · Cardiac Surgery"
-      }
-    },
-    {
-      "area": "page-section",
-      "page": "Home",
-      "route": "/{ar|en}/",
-      "section": "Hero",
-      "sectionKey": "hero",
-      "component": "components/home/Hero.tsx",
-      "dashboard": "/admin/pages/edit/?id=home&section=hero",
       "field": "headlineLead",
       "label": "Headline — first line",
       "type": "text",
@@ -1213,23 +1196,6 @@
       "value": {
         "ar": "جميع الخدمات",
         "en": "All services"
-      }
-    },
-    {
-      "area": "page-section",
-      "page": "Home",
-      "route": "/{ar|en}/",
-      "section": "Services overview",
-      "sectionKey": "services",
-      "component": "components/home/ServicesBento.tsx",
-      "dashboard": "/admin/pages/edit/?id=home&section=services",
-      "field": "featuredTag",
-      "label": "Featured card tag",
-      "type": "text",
-      "localized": true,
-      "value": {
-        "ar": "مقاربة هجينة",
-        "en": "Hybrid approach"
       }
     },
     {
@@ -1809,23 +1775,6 @@
       "value": {
         "ar": "د. جمال منصور",
         "en": "Dr. Gamal Mansour"
-      }
-    },
-    {
-      "area": "page-section",
-      "page": "About the doctor",
-      "route": "/{ar|en}/about/",
-      "section": "Page hero",
-      "sectionKey": "hero",
-      "component": "components/sections/about.tsx",
-      "dashboard": "/admin/pages/edit/?id=about&section=hero",
-      "field": "subtitle",
-      "label": "Subtitle",
-      "type": "text",
-      "localized": true,
-      "value": {
-        "ar": "جراحة القلب · هايبرد هارتس",
-        "en": "Cardiac Surgery · Hybrid Hearts"
       }
     },
     {
